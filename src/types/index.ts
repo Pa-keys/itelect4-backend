@@ -18,6 +18,14 @@ export interface TutoringSession {
   scheduledAt: Date;
   durationMinutes: number;
 }
+export interface Tutor {
+  id: string;
+  name: string;
+  email: string;
+  isActive: boolean;
+  bio?: string;
+  subjects?: string[];
+}
 export enum BookingStatus {
   Pending = 'pending',
   Confirmed = 'confirmed',
@@ -34,6 +42,8 @@ export interface Booking {
 }
 export type UserDoc = Omit<User, 'id'> & { password: string };
 export type BookingDoc = Omit<Booking, 'id' | 'tuteeId'> & { tuteeId: Types.ObjectId };
+export type TutorDoc = Omit<Tutor, 'id'>;
+export type TutoringSessionDoc = Omit<TutoringSession, 'id' | 'tutorId'> & { tutorId: Types.ObjectId };
 export type RegisterInput = Pick<UserDoc, 'name' | 'email' | 'password'>;
 export type LoginInput = Pick<RegisterInput, 'email' | 'password'>;
 export type BookingInput = Pick<Booking, 'sessionId' | 'status' | 'note'>;
