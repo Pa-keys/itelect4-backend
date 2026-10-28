@@ -6,6 +6,7 @@ import { authRouter } from './routes/auth.js';
 import { bookingRouter } from './routes/bookings.js';
 import { tutoringSessionRouter } from './routes/sessions.js';
 import { tutorRouter } from './routes/tutors.js';
+import { aiRouter } from './routes/ai.js';
 import { errorHandler } from './middleware/errors.js';
 
 export const app = express();
@@ -31,6 +32,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/tutors', tutorRouter);
 app.use('/api/sessions', tutoringSessionRouter);
 app.use('/api/bookings', bookingRouter);
+app.use('/api/ai', aiRouter);
 app.use((_req, res) => { res.status(404).json({ message: 'Route not found' }); });
 app.use(errorHandler);
 
